@@ -4294,6 +4294,8 @@ class TermKeyListener {
 				result = '[';
 			} else if (ch=='p') {
 				result = ']';
+			} else if (ch=='w') {
+				result = '~';
 			}			
 		}
 		
