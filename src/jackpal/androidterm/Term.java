@@ -3373,6 +3373,12 @@ class EmulatorView extends View implements GestureDetector.OnGestureListener {
             mKeyListener.handleControlKey(down);
             return true;
         }
+	if (keyCode == 98)  { //sym key
+		Log.w(TAG, "Handle sym key" + keyCode);
+            mKeyListener.handleSymKey(down);
+            return true;		
+	}
+
         return false;
     }
 
@@ -4193,6 +4199,8 @@ class TermKeyListener {
 
     private ModifierKey mControlKey = new ModifierKey();
 
+    private ModifierKey mSymKey = new ModifierKey();
+
     private boolean mCapsLock;
 
     static public final int KEYCODE_OFFSET = 1000;
@@ -4212,6 +4220,15 @@ class TermKeyListener {
             mControlKey.onRelease();
         }
     }
+
+    public void handleSymKey(boolean down) {
+        if (down) {
+            mSymKey.onPress();
+        } else {
+            mSymKey.onRelease();
+        }
+    }
+
 
     public int mapControlChar(int ch) {
         int result = ch;
@@ -4253,6 +4270,39 @@ class TermKeyListener {
         return result;
     }
 
+
+	public int mapSymChar(int ch) {
+		int result = -1;
+		if (mSymKey.isActive()) {
+			if (ch=='t') {
+				result = '{';
+			} else if (ch=='y') {
+				result = '}';
+			}  else if (ch=='/') {
+				result = '\\';
+			} else if (ch=='q') {
+				result = 27; //escape
+			} else if (ch=='i') {
+				result ='|';
+			} else if (ch=='.') {
+				result = '<';
+			} else if (ch==',') {
+				result = '>';
+			} else if (ch=='v') {
+				result = '^';
+			} else if (ch=='o') {
+				result = '[';
+			} else if (ch=='p') {
+				result = ']';
+			}			
+		}
+		
+		if (result==-1)
+			return ch;
+		mSymKey.adjustAfterKeypress();
+		return result;
+	}
+
     /**
      * Handle a keyDown event.
      *
@@ -4263,6 +4313,9 @@ class TermKeyListener {
         if (handleKeyCode(keyCode, out, appMode)) {
             return;
         }
+
+	Log.w(Term.LOG_TAG,"KEYCODE: " + keyCode);
+
         int result = -1;
         switch (keyCode) {
         case KeyEvent.KEYCODE_ALT_RIGHT:
@@ -4295,6 +4348,8 @@ class TermKeyListener {
         }
 
         result = mapControlChar(result);
+
+        result = mapSymChar(result);
 
         if (result >= KEYCODE_OFFSET) {
             handleKeyCode(result - KEYCODE_OFFSET, out, appMode);

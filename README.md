@@ -1,4 +1,24 @@
-#Android Terminal Emulator
+#Android Terminal Emulator (Acer E130 Mod)
+
+This is my quick 30 minutes hack to add some keymapping to make the terminal more usable for my Acer BeTouch E130. I didn't use any configuration, everything is hardcoded for my own need.
+
+I added the 'Sym' button as new modifier, with the following bindings:
+
+
+  * Sym + t = '{' (in the keyboard Fn + 't' is '(', so it is easy to remember)
+  * Sym + y = '}' (in the keyboard Fn + 'y' is ')', so it is easy to remember)
+  * Sym + / = '\' (mnemonic: reverse /)
+  * Sym + i = '|' (mnemonic: looks like an 'i')
+  * Sym + q = ESC (mnemonic: escape is on top left)
+  * Sym + . =  '<' (mnemonic: like in standard qwerty keyboard, but inverted the position)
+  * Sym + , =  '>' (mnemonic: like in standard qwerty keyboard, but inverted the position)
+  * Sym + v =  '^' (mnemonic: v is inverted '^') 
+  * Sym + 'o'  = '[' (mnemonic: the position of [ in standard keyboard is on top right)
+  * Sym + 'p'  = ']' (mnemonic: the position of ] in standard keyboard is on top right)
+  
+  
+
+##Android Terminal Emulator (original readme)
 
 Android Terminal Emulator is a terminal emulator for communicating with the built-in Android shell. Emulates a reasonably large subset of Digital Equipment Corporation VT-100 terminal codes, so that programs like "vi", "Emacs" and "NetHack" will display properly.
 
