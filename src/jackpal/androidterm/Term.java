@@ -4296,7 +4296,9 @@ class TermKeyListener {
 				result = ']';
 			} else if (ch=='w') {
 				result = '~';
-			}			
+			} else if (ch=='k') {
+      result = '`';
+ }		
 		}
 		
 		if (result==-1)

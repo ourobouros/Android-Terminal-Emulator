@@ -16,7 +16,7 @@ I added the 'Sym' button as new modifier, with the following bindings:
   * Sym + 'o'  = '[' (mnemonic: the position of [ in standard keyboard is on top right)
   * Sym + 'p'  = ']' (mnemonic: the position of ] in standard keyboard is on top right)
   * Sym + 'w'  = '~' (mnemonic: the position ~ is almost on top left on standard qwerty)  
-  
+  * Sym + 'k' = "`" (mnemonic: backtikc looks like inverted single quote)  
   
 
 ##Android Terminal Emulator (original readme)
